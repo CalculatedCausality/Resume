@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import Header from './components/Header';
+import About from './components/About';
+import Experience from './components/Experience';
+import Education from './components/Education';
+import Skills from './components/Skills';
+import Contact from './components/Contact';
+import './App.css';
+import { TweenMax, Power3 } from 'gsap';
 
-function App() {
-  const [count, setCount] = useState(0)
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.headerRef = React.createRef();
+    this.aboutRef = React.createRef();
+    this.experienceRef = React.createRef();
+    this.educationRef = React.createRef();
+    this.skillsRef = React.createRef();
+    this.contactRef = React.createRef();
+  }
 
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
-}
-
-export default App
+  componentDidMount() {
+    TweenMax.from(this.headerRef.current, 2, {
+      opacity: 0,
+      y: -100,
+      ease: Power3.easeOut,
+    });
+    TweenMax.from(this.aboutRef.current, {
+      opacity: 0,
+      y: 10,
+      ease: Power3.easeOut,
+      delay: 0.5,
+    });
+    TweenMax.from(this.experienceRef.current, {
+      opacity: 0,
+      x: -10,
+      ease: Power3.easeOut,
+      delay: 1,
+    });
+    TweenMax.from(this.educationRef.current, {
+      opacity: 0,
+      y: 10,
+      ease: Power
